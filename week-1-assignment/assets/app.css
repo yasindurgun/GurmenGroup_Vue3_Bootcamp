@@ -565,7 +565,7 @@ progress.squirtle[value]::-webkit-progress-value {
   align-items: center;
 }
 .css--class--app .css--palette li {
-  /* float: left; */
+   float: left; 
   width: 50px;
   height: 50px;
   /* background-color: #ccc; */
@@ -782,4 +782,23 @@ progress.squirtle[value]::-webkit-progress-value {
 }
 .green {
   background-color: green;
+}
+.class--list--app .class-list {
+  list-style-type: none !important;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+.class--list--app .class-list li {
+  margin-bottom: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
