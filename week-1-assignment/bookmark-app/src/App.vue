@@ -1,7 +1,8 @@
 <template>
 <header>Bookmark App</header>
-
+ <AddBookMarkItemSection :addBookMark="addBookMark"/>
     <div class="container">
+      
       <div class="bookmark--app--container">
         
         <BookmarkItem v-for="bookmark in provideData.BookmarkItems" :key="bookmark.id" :item="bookmark"/>
@@ -11,7 +12,9 @@
 </template>
 
 <script>
-import BookmarkItem from "@/components/BookmarkItem"
+import BookmarkItem from "@/components/BookmarkItem";
+import addBookMarkItemSection from "@/components/addBookMarkItemSection";
+import AddBookMarkItemSection from "./components/addBookMarkItemSection.vue";
 
 export default {
   data(){
@@ -28,19 +31,39 @@ export default {
     };
   },
   components: {
-        BookmarkItem
-    },
+    BookmarkItem,
+    addBookMarkItemSection,
+    AddBookMarkItemSection
+},
 
     provide() {
       return {
         provideData: this.provideData,
-        deleteBookmark: this.deleteBookmark
+        addBookMark: this.addBookMark,
+        deleteBookmark: this.deleteBookmark,
       }
     },
 
     methods: {
       deleteBookmark(bookmark){
         this.provideData.BookmarkItems = this.provideData.BookmarkItems.filter((b) => b != bookmark);
+      },
+      addBookMark(bookmark){
+        if(bookmark.title != "" && bookmark.description != "" && bookmark.link != ""){
+          this.provideData.BookmarkItems.push({
+            id: new Date().getTime(),
+            title: bookmark.title,
+            description: bookmark.description,
+            link: bookmark.link,
+            clicked: false
+          })
+        }
+        bookmark.title="";
+        bookmark.description = "";
+        bookmark.link="";
+      },
+      clearInputs(){
+
       }
     }
 }
