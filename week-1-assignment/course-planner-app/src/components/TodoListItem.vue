@@ -6,6 +6,9 @@
             </li>
             
           </ul> -->
+
+            <!-- li elementinin kendisini de bir component yapabilirdik. -->
+
             <li v-if="!item.checked" class="course-item list-item bg-danger">
               <span>{{item.text}}</span>
               <input type="checkbox" :id="item.id" v-model="item.checked"/>
