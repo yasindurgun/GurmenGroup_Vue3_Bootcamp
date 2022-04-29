@@ -21,11 +21,11 @@
               </div>
               <div class="d-flex justify-content-between align-items-center mt-5">
                 <span>Kupon Tutarı</span>
-                <span class="font-weight-bold">10,00 TL</span>
+                <span :value="price" class="font-weight-bold">{{couponPrice}}</span>
               </div>
               <div class="d-flex justify-content-between align-items-center mt-5">
                 <span>Tahmini Kazanç</span>
-                <span class="font-weight-bold text-info">450,00 TL</span>
+                <span class="font-weight-bold text-info">{{win}}</span>
               </div>
             </div>
           </div>
@@ -34,11 +34,12 @@
 
 <script>
   export default {
-    props: ["totalRatio"],
+    props: ["totalRatio","totalPrice"],
     inject: ["provideData", "calculateTotalRatio"],
     data() {
       return {
         times2 :0,
+        price: 1,
       }
     },
     computed: {
@@ -47,6 +48,14 @@
       },
       returnTotal() {
         return this.totalRatio;
+      },
+     couponPrice(){
+       console.log("price", this.price);
+       return this.totalRatio*this.times2;
+      },
+      win(){
+        console.log("deneme2");
+        return (this.totalRatio*this.times2)*this.totalRatio;
       }
       
     }

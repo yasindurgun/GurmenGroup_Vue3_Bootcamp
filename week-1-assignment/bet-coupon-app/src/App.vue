@@ -12,7 +12,7 @@
         <!-- Kuponum -->
         <div class="coupon--total--container">
       <couponListSection/>
-      <couponResultSection :totalRatio="totalRatio"/>
+      <couponResultSection :totalRatio="totalRatio" :totalPrice="totalPrice"/>
       </div>
       </div>
     </div>
@@ -47,6 +47,7 @@ data() {
       },
       times: 10,
       totalRatio :0,
+      totalPrice: 0,
     };
   },
 
@@ -55,6 +56,7 @@ provide() {
       provideData: this.provideData,
       addItemToCoupon: this.addItemToCoupon,
       times: this.times,
+      totalPrice: this.totalPrice
     };
   },
 
@@ -115,7 +117,7 @@ provide() {
           this.totalRatio += Number(this.provideData.coupons[i].ratio);
         }
         console.log("this.totalRatio", this.totalRatio);
-      }
+      },
     
   },
 
